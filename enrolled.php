@@ -1,5 +1,5 @@
 
-	<div id="menu">
+	
 		<?php
 			require 'header.php';
 		/*
@@ -7,8 +7,7 @@
 			$currently_enrolled_query = "SELECT * FROM enrolled WHERE student_id=";
 		*/
 		?>
-	</div>
-
+		
 			<div id=enrolled>
 				<h1>hello world</h1>
 			</div>

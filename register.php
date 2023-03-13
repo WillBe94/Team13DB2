@@ -33,31 +33,34 @@
 		{
 			$next_id = $last_id + 1;
 		}
-		/*
-		$insert_modification = "INSERT INTO users (id, email, password, name, phone) VALUES ($next_id, $email, $password, $name, $phone)";
-		$insert_modification_stmt = $db->prepare($insert_modification);
-		$insert_modification_stmt->execute();
 		
-		//$message = "Registration Successful!";
-
-
-		/*
-		$outputstring = $username."\t".$password."\n";
-
-		// open file for appending
-		$doc_root = $_SERVER['DOCUMENT_ROOT'];
-		$fp = fopen("$doc_root/userData.txt", 'a');
-		flock($fp, LOCK_EX);
-
-		if (!$fp) 
 		{
-			echo "<p><strong> Your registration could not be processed at this time.  Please try again later.</strong></p></body>";
-			exit;
+			/*
+			$insert_modification = "INSERT INTO users (id, email, password, name, phone) VALUES ($next_id, $email, $password, $name, $phone)";
+			$insert_modification_stmt = $db->prepare($insert_modification);
+			$insert_modification_stmt->execute();
+			
+			//$message = "Registration Successful!";
+
+
+			/*
+			$outputstring = $username."\t".$password."\n";
+
+			// open file for appending
+			$doc_root = $_SERVER['DOCUMENT_ROOT'];
+			$fp = fopen("$doc_root/userData.txt", 'a');
+			flock($fp, LOCK_EX);
+
+			if (!$fp) 
+			{
+				echo "<p><strong> Your registration could not be processed at this time.  Please try again later.</strong></p></body>";
+				exit;
+			}
+			fwrite($fp, $outputstring, strlen($outputstring));
+			flock($fp, LOCK_UN);
+			fclose($fp);
+			*/
 		}
-		fwrite($fp, $outputstring, strlen($outputstring));
-		flock($fp, LOCK_UN);
-		fclose($fp);
-		*/
 
 	}
 ?>
@@ -70,20 +73,19 @@
 	<body>
 		<h1>Greendale online portal registration</h1>
 
-		<form action="chooseChildren.php" method="post">
-			<input type="email" name="email_text" id="user_email" placeholder="Enter Email Here" required/><br>
-			<input type="password" name="password_text" id="user_password" placeholder="Enter Password Here" required/><br>
-			<input type="text" name="name_text" id="user_real_name" placeholder="Enter Name Here" required/><br>
-			<input type="tel" pattern="[0-9]{3}-[0-9]{3}=[0-9]{4}" name="phone_number" id="user_phone_number" placeholder="Enter Phone Number Here" required/><br>
-			<input type="text" name="grade_level" placeholder="Enter Grade Level (only required for Students)" id="student_grade_level"><br>
+		<form action="register_script.php" method="post">
+			Email<input type="email" name="email_text" id="user_email" placeholder="School email preferred" required/><br>
+			Password<input type="password" name="password_text" id="user_password" placeholder="******" required/><br>
+			Full Name<input type="text" name="name_text" id="user_real_name" placeholder="" required/><br>
+			Phone Number<input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone_number" id="user_phone_number" placeholder="" required/><br>
+			Grade Level<input type="text" name="grade_level" placeholder="only required for students" id="student_grade_level"><br>
 			<select name="user_type" id="drop_down_menu">
 				<option value="student">Student</option>
 				<option value="parent">Parent</option>
 			</select><br>
 			<input type="submit" value="Register" name="submit"/>
-			<button onclick="location.href='http://localhost/registration.php'" type="button">Return to login</button>
-
-		</form> 
-		<?php echo $message; ?>
+			<button onclick="location.href='http://localhost/login.html'" type="button">Return to login</button>
+		</form>
+		<!--<?php// echo $message; ?>-->
 	</body>
 </html>

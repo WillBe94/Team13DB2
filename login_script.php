@@ -1,4 +1,5 @@
 <?php
+	session_start(); //start the session
 	if(isset($_SESSION['user_type'])) //if coming from the registration screen, just log the user in
 	{
 		if($_SESSION['user_type']=="student")
@@ -19,8 +20,6 @@
 	}
 	else
 	{
-		session_start(); //start the session
-
 		$username = $_POST['username'];
 		$password = $_POST['pwd'];
 		

@@ -21,7 +21,7 @@ while ($row = $owned_result->fetch_assoc()) {
 <div>
     <form action="childrenchoose_script.php" method="post">
         All Students
-        <table cellspacing="3" bgcolor="#000000">
+        <table cellspacing="1" bgcolor="#000000">
             <tr bgcolor="#ffffff">
                 <th>Your Children</th>
                 <th>Name</th>

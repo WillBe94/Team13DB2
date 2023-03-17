@@ -11,26 +11,17 @@ if (!isset($_SESSION['user_id'])) {
 }
 $user_id = $_SESSION['user_id'];
 $user_type = $_SESSION['user_type'];
-
-
-
-$children_array = [];
-if($user_type == "parent") {
-    //This will be the query to check if the child belongs to the parent
-
-   // array_push($children_array, "apple");
-}
 ?>
 
 <html>
 
 <body>
-    <p><?php echo "You are a $user_type"; ?> <a href="./logout.php">Logout</a></p>
+    <p><?php echo "You are a $user_type"; ?><br> <a href="./logout.php">Logout</a></p>
 
     <div id=ribbon_menu>
         <a href=" ./enrolled.php">Current Enrollments</a> | <a href="./reading_groups.php">Reading Groups</a>
         <?php if($user_type == "parent") { ?> | <a href="./childrenchoose.php">My Children</a>
         <?php } ?>
-        <?php if($user_type == "student") { ?>
-        | <a href='http://localhost/settings.php?user_id=<?php echo $user_id; ?>'">Settings</a> <?php } ?>
+        <?php if($user_type == "student" || $user_type = "parent") { ?>
+        | <a href='http://localhost/settings.php?user_id=<?php echo $user_id; ?>&user_type=<?php echo $user_type; ?>'">My Settings</a> <?php } ?>
     </div>

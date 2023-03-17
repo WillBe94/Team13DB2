@@ -54,7 +54,7 @@ if (!$dupe_count > 0) //number of dupes is not greater than 0
 			//Make sure we actually made the parent before we allow the parent to go around the website validated
 			$_SESSION['user_id'] = $next_id;
 			$_SESSION['user_type']= $user_type;
-			header('Location: /choose_children.php');
+			header('Location: /childrenchoose.php');
 			break;
 		default:
 			//HALT AND CATCH FIRE

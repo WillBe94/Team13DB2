@@ -32,13 +32,13 @@ while ($row = $usersettings_result->fetch_assoc()) {
 </br>
 <div>
     <form action="settings_script.php" method="post">
-        Email<input value=<?php echo $setting_email; ?> type="email" name="email_text" id="user_email"
+        Email<input value="<?php echo $setting_email; ?>" type="email" name="email_text" id="user_email"
             placeholder="School email preferred" required /><br>
-        Full Name<input value=<?php echo $setting_name; ?> type="text" name="name_text" id="user_real_name"
+        Full Name<input value="<?php echo $setting_name; ?>"" type=" text" name="name_text" id="user_real_name"
             placeholder="" required /><br>
-        Phone Number<input value=<?php echo $setting_phone; ?> type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        Phone Number<input value="<?php echo $setting_phone; ?>" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             name="phone_number" id="user_phone_number" placeholder="" required /><br>
-        Grade Level<input value=<?php echo $setting_gradelevel; ?> type="text" name="grade_level"
+        Grade Level<input value="<?php echo $setting_gradelevel; ?>"" type=" text" name="grade_level"
             placeholder="only required for students" id="student_grade_level"><br>
         </br>
         <input type="submit" value="Update" name="submit" />

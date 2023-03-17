@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
     $sql = "UPDATE students SET grade='$grade_level' WHERE student_id='$user_id'";
     
     if (mysqli_query($db,$sql) === TRUE) {
-        header("Location: settings.php");
+        header("Location: settings.php?user_id=$user_id");
     } else {
         echo "Error updating record: " . $db->error;
     }

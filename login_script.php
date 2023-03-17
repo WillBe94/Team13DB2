@@ -40,22 +40,26 @@ if (isset($_SESSION['user_type'])) //if coming from the registration screen, jus
 
 		$is_admin_query = "SELECT COUNT(admin_id) FROM admins WHERE admin_id = $user_id;";
 		$is_admin = mysqli_query($db, $is_admin_query);
+		$row_admin = $is_admin->fetch_row();
 
 		$is_parent_query = "SELECT COUNT(parent_id) FROM parents WHERE parent_id = $user_id;";
 		$is_parent = mysqli_query($db, $is_parent_query);
+		$row_parent = $is_parent->fetch_row();
 
 		$is_student_query = "SELECT COUNT(student_id) FROM students WHERE student_id = $user_id;";
 		$is_student = mysqli_query($db, $is_student_query);
+		$row_student = $is_student->fetch_row();
+		
 
-		if ($is_admin == 1 && $is_parent == 0 && $is_student == 0) //is the user the admin?
+		if ($row_admin[0] == 1) //is the user the admin?
 		{
 			$_SESSION["user_type"] = "admin"; //save to session
 			header('Location: /enrolled.php');
-		} elseif ($is_parent == 1 && $is_student == 0) //is the user a parent?
+		} elseif ($row_parent[0] == 1) //is the user a parent?
 		{
 			$_SESSION["user_type"] = "parent";
 			header('Location: /enrolled.php');
-		} elseif ($is_student == 1) //surely the user is a student then... right?
+		} elseif ($row_student[0] == 1) //surely the user is a student then... right?
 		{
 			$_SESSION["user_type"] = "student";
 			header('Location: /enrolled.php');

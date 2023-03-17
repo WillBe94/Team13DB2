@@ -84,6 +84,7 @@ while ($row = $usersettings_result->fetch_assoc()) {
         <input type="submit" value="Update" name="submit" />
 
     </form>
+    <?php if($user_type == "parent") { ?>
     <p>My Children</p>
     <?php
         while ($row = $c_result->fetch_assoc()) {
@@ -93,6 +94,7 @@ while ($row = $usersettings_result->fetch_assoc()) {
 
     <?php
         }
+    }
     ?>
 </div>
 

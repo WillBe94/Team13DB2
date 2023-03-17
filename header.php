@@ -1,4 +1,5 @@
 <?php
+//Make query check for if student belongs to parent
 include ("database_connect.php");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -10,6 +11,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 $user_id = $_SESSION['user_id'];
 $user_type = $_SESSION['user_type'];
+
+$children_array = [];
+if($user_type == "parent") {
+    //This will be the query to check if the child belongs to the parent
+
+   // array_push($children_array, "apple");
+}
+
+
 ?>
 
 <html>
@@ -20,7 +30,12 @@ $user_type = $_SESSION['user_type'];
         <a href="./logout.php">Logout</a>
     </div>
     <div id="settings_button">
-        <button onclick="location.href='http://localhost/settings.php'" type="button">Settings</button>
+        <?php if($user_type == "student") { ?>
+        <button onclick="location.href='http://localhost/settings.php?user_id=<?php echo $user_id; ?>'"
+            type="button">Settings</button>
+        <?php } else if($user_type == "parent") { ?>
+
+        <?php } ?>
     </div>
 
     <div id=ribbon_menu>

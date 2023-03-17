@@ -1,12 +1,19 @@
 <?php  
-//Password will not work since we are hashing which is only one way (This is normal)
+//Password talk to teammates how we want to do it
 //Check session to make sure only student or parent can be here
-//If parent do a query to see if the child belongs to the parent5
+//If parent do a query to see if the child belongs to the parents
 require 'header.php';
+if(!isset($_GET['user_id'])) {
+    echo "This user does not exist";
+    exit();
+}
+$setting_userid = htmlspecialchars($_GET["user_id"]);
+
+
 
 $usersettings_query = "SELECT email,name,phone,grade FROM users
                        INNER JOIN students ON student_id = id
-                       WHERE `id`='$user_id';";
+                       WHERE `id`='$setting_userid';";
 $usersettings_result = mysqli_query($db, $usersettings_query); 
 
 $setting_name = "";
@@ -20,11 +27,11 @@ while ($row = $usersettings_result->fetch_assoc()) {
     $setting_phone = $row['phone'];
     $setting_gradelevel = $row['grade'];
 }
-
 ?>
+
 </br>
 <div>
-    <form action="setting_script.php" method="post">
+    <form action="settings_script.php" method="post">
         Email<input value=<?php echo $setting_email; ?> type="email" name="email_text" id="user_email"
             placeholder="School email preferred" required /><br>
         Full Name<input value=<?php echo $setting_name; ?> type="text" name="name_text" id="user_real_name"

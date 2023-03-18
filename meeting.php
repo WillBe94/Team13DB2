@@ -1,7 +1,7 @@
 <?php  
 require 'header.php';
 
-$meeting_query = "SELECT meeting_id,meeting_name,group_id,date,capacity,announcement FROM meetings a
+$meeting_query = "SELECT meeting_id,meeting_name,group_id,start_time,date,capacity,announcement FROM meetings a
 INNER JOIN time_slot b ON a.time_slot_id = b.time_slot_id;";
 $meeting_result = mysqli_query($db, $meeting_query); 
 
@@ -29,11 +29,11 @@ $group_result = mysqli_query($db, $group_query);
             <tr bgcolor="#ffffff">
                 <td><input type="text" name="meeting_name" required></td>
                 <td><input type="date" type="text" name="date" required></td>
-                <td><input type="time" name="time" min="00:00" max="12:00" required></td>
-                <td><select required> <?php  while ($row = $group_result->fetch_assoc()) { ?> <option
+                <td><input type="time" name="time" min="00:00" max="24:00" required></td>
+                <td><select name="group_id" required> <?php  while ($row = $group_result->fetch_assoc()) { ?> <option
                             value="<?php echo $row['group_id']; ?>"> <?php echo $row['name']; ?>
                         </option> <?php } ?> </select></td>
-                <td><input type="text" name="announcment"></td>
+                <td><input type="text" name="announcement"></td>
             </tr>
         </table>
         </br>
@@ -41,7 +41,7 @@ $group_result = mysqli_query($db, $group_query);
         <input type="submit" value="Create" name="create" />
     </form>
     <br><br><br>
-
+    <?php mysqli_data_seek($group_result,0); ?>
     <form action="meeting_script.php" method="post">
         <h2>All Meetings</h2>
         <table cellspacing="1" bgcolor="#000000">
@@ -60,16 +60,17 @@ $group_result = mysqli_query($db, $group_query);
 
                 <td><input value="<?php echo $row['meeting_name'] ?>" type="text" name="meeting_name" required></td>
                 <td><input value="<?php echo $row['date'] ?>" type="date" type="text" name="date" required></td>
-                <td><input value="<?php echo $row['capacity'] ?>" type="time" name="time" min="00:00" max="12:00"
-                        required></td>
-                <td><select required> <?php  while ($row2 = $group_result->fetch_assoc()) { ?> <option
-                            <?php if($row['group_id'] == $row2['group_id']) { echo "selected"; } ?>
+                <td><input value="<?php echo $row['start_time'] ?>" type="time" name="time" min="00:00" max="24:00"
+                        required>
+                </td>
+                <td><select name="group_id" required> <?php  while ($row2 = $group_result->fetch_assoc()) { ?> <option
+                            <?php  if($row['group_id'] == $row2['group_id']) { echo "selected"; } ?>
                             value="<?php echo $row2['group_id']; ?>"> <?php echo $row2['name']; ?>
-                        </option> <?php } ?> </select></td>
-                <td><input value="<?php echo $row['announcment'] ?>" type="text" name="announcment"></td>
+                        </option> <?php  } ?> </select></td>
+                <td><input value="<?php echo $row['announcement'] ?>" type="text" name="announcment"></td>
 
             </tr>
-            <?php }?>
+            <?php  mysqli_data_seek($group_result,0); }?>
         </table>
         </br>
 

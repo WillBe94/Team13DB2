@@ -1,27 +1,35 @@
 <?php
 session_start();
+include ("helper.php");
 if(isset($_POST['create'])) {
     include ("database_connect.php");
-    $max_id_query = "SELECT MAX(`group_id`) FROM `groups`;";
-    $max_id_result = mysqli_query($db, $max_id_query);
-    $max_id_row = mysqli_fetch_row($max_id_result);
-    $max_id = $max_id_row[0];
-    $next_id = $max_id + 1;
-
+    $next_meetingid =  getNextId("meetings","meeting_id",$db);
     $meeting_name = $_POST['meeting_name'];
     $date = $_POST['date'];
-    $time_slot_id = $_POST['time_slot_id'];
-    $capacity = $_POST['capacity'];
+    $time = $_POST['time'];
     $group_id = $_POST['group_id'];
     $announcement = $_POST['announcement'];
 
+    $mysqlDate=date("Y-m-d",strtotime($date));
+
+    $mysqlDateInt=strtotime($mysqlDate);
+    $day = date('D', $mysqlDateInt);
+    
+    $next_timeslot =  getNextId("time_slot","time_slot_id",$db);
+    $mysqlTime = date('h:i:s A', strtotime($time)+3600);
     //Create time slot 
 
+    $sql = "INSERT INTO time_slot (time_slot_id, day_of_the_week,start_time,end_time)
+    VALUES ('$next_timeslot', '$day', '$time', '$mysqlTime')";
+    
+    if ($db->query($sql) === FALSE) {
+      echo "Error: " . $sql . "<br>" . $db->error;
+      exit();
+    }
 
-  
-  
+    //create meeting
         $sql = "INSERT INTO meetings (meeting_id, meeting_name,date,time_slot_id,capacity,group_id,announcement)
-        VALUES ('$next_id', '$student_id' '$student_id' '$student_id' '$student_id' '$student_id' '$student_id')";
+        VALUES ('$next_meetingid', '$meeting_name', '$mysqlDate', '$next_timeslot', 0 ,'$group_id', '$announcement')";
         
         if ($db->query($sql) === FALSE) {
           echo "Error: " . $sql . "<br>" . $db->error;

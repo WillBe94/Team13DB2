@@ -7,7 +7,7 @@ $password_text = $_POST['password_text'];
 $name_text = $_POST['name_text'];
 $phone_number = $_POST['phone_number'];
 $user_type = $_POST['user_type'];
-echo ("user type: $user_type");
+
 if ($user_type == "student") {
 	$grade_level = $_POST['grade_level'];
 }
@@ -22,9 +22,7 @@ $no_dupe_query = "SELECT COUNT(`id`) FROM `users` WHERE `email`='$email';";
 $dupe_count_result = mysqli_query($db, $no_dupe_query); //need to check that no users already exist with the provided email
 //echo("<p>dupe_count_result: $dupe_count_result\n</p>");
 $dupe_count_row = mysqli_fetch_row($dupe_count_result);
-echo ("dupe_count_row: $dupe_count_row\n");
 $dupe_count = $dupe_count_row[0];
-echo ("dupe_count: $dupe_count\n");
 
 
 if (!$dupe_count > 0) //number of dupes is not greater than 0

@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS child_of;
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS parents;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS member_of;
 
 -- ----------------------------
 -- Table structure for users
@@ -140,4 +141,14 @@ CREATE TABLE enroll (
   FOREIGN KEY (meeting_id) REFERENCES meetings (meeting_id)
 );
 
+-- ------------------------------
+-- Table structure for member_of
+-- ------------------------------
 
+CREATE TABLE member_of (
+  group_id int(11) NOT NULL,
+  student_id int(11) NOT NULL,
+  PRIMARY KEY (group_id, student_id),
+  FOREIGN KEY (student_id) REFERENCES students (student_id),
+  FOREIGN KEY (group_id) REFERENCES groups (group_id)
+);

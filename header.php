@@ -19,9 +19,10 @@ $user_type = $_SESSION['user_type'];
     <p><?php echo "You are a $user_type"; ?><br> <a href="./logout.php">Logout</a></p>
 
     <div id=ribbon_menu>
-        <a href=" ./enrolled.php">Current Enrollments</a> | <a href="./reading_groups.php">Reading Groups</a>
+        <a href=" ./enrolled.php">Current Enrollments</a> | <a href="./readinggroup.php">Reading Groups</a>
         <?php if($user_type == "parent") { ?> | <a href="./childrenchoose.php">My Children</a>
         <?php } ?>
-        <?php if($user_type == "student" || $user_type = "parent") { ?>
-        | <a href='http://localhost/settings.php?user_id=<?php echo $user_id; ?>&user_type=<?php echo $user_type; ?>'">My Settings</a> <?php } ?>
+        <?php if($user_type == "student" || $user_type == "parent") { ?>
+        | <a href='http://localhost/settings.php?user_id=<?php echo $user_id; ?>&user_type=<?php echo $user_type; ?>'>My
+            Settings</a> <?php } ?>
     </div>

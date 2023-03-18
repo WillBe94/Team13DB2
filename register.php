@@ -70,6 +70,7 @@ if (isset($_POST['submit'])) { //check if form was submitted
         <select name="user_type" id="drop_down_menu">
             <option value="student">Student</option>
             <option value="parent">Parent</option>
+            <option value="admin">Admin</option>
         </select><br>
         <input type="submit" value="Register" name="submit" />
         <button onclick="location.href='http://localhost/login.html'" type="button">Return to login</button>

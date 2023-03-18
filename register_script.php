@@ -54,9 +54,17 @@ if (!$dupe_count > 0) //number of dupes is not greater than 0
 			$_SESSION['user_type']= $user_type;
 			header('Location: /childrenchoose.php');
 			break;
+		case 'admin':
+			$insert_admin_modification = "INSERT INTO admins (admin_id) VALUES ($next_id)";
+			mysqli_query($db, $insert_admin_modification);
+			//Make sure we actually made the parent before we allow the parent to go around the website validated
+			$_SESSION['user_id'] = $next_id;
+			$_SESSION['user_type']= $user_type;
+			header('Location: /enrolled.php');
+			break;
 		default:
 			//HALT AND CATCH FIRE
-			echo ('<p>Error: neither student nor parent was selected in drop-down menu</p>');
+			echo ('<p>Error: neither student, parent, or admin was selected in drop-down menu</p>');
 	}
 } else {
 	//HALT AND CATCH FIRE

@@ -39,9 +39,9 @@ while ($row = $owned_result->fetch_assoc()) {
                 <th>Grade Req.</th>
             </tr>
             <tr bgcolor="#ffffff">
-                <td><input type=" text" name="name"></td>
-                <td><input type=" text" name="desc"></td>
-                <td><input type=" number" pattern="[0-9]+" name="grade_req"></td>
+                <td><input type=" text" name="name" required></td>
+                <td><input type=" text" name="desc" required></td>
+                <td><input type=" number" pattern="[0-9]+" name="grade_req" required></td>
             </tr>
         </table>
         </br>

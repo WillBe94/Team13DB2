@@ -57,7 +57,7 @@ if (!$dupe_count > 0) //number of dupes is not greater than 0
 		case 'admin':
 			$insert_admin_modification = "INSERT INTO admins (admin_id) VALUES ($next_id)";
 			mysqli_query($db, $insert_admin_modification);
-			//Make sure we actually made the parent before we allow the parent to go around the website validated
+			//Make sure we actually made the admin before we allow the parent to go around the website validated
 			$_SESSION['user_id'] = $next_id;
 			$_SESSION['user_type']= $user_type;
 			header('Location: /enrolled.php');

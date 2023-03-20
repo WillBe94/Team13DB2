@@ -17,7 +17,6 @@ if(isset($_POST['create'])) {
     $mysqlDateInt=strtotime($mysqlDate);
     $day = date('D', $mysqlDateInt);
     
-    //create meeting
         $sql = "INSERT INTO material
         (material_id,
         title,
@@ -40,6 +39,41 @@ if(isset($_POST['create'])) {
         if ($db->query($sql) === FALSE) {
           echo "Error: " . $sql . "<br>" . $db->error;
           exit();
+        }
+    
+    header("Location: studymaterial.php");
+
+} else if(isset($_POST['update'])) {
+    include ("database_connect.php");
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $type = $_POST['type'];
+    $url = $_POST['url'];
+    $notes = $_POST['notes'];
+    $material_id = $_POST['material_id'];
+    $assigned_date = $_POST['date'];
+    $meeting_id = $_POST['meeting_id'];
+
+    foreach ($meeting_id as $key => $value) {
+
+      $mysqlDate=date("Y-m-d",strtotime($assigned_date[$key]));
+
+    //update material
+        $sql = "UPDATE material SET
+        title = '$title[$key]',
+        author = '$author[$key]',
+        type = '$type[$key]',
+        url = '$url[$key]' ,
+        notes = '$notes[$key]' ,
+        assigned_date = '$mysqlDate' ,
+        meeting_id = '$meeting_id[$key]' 
+        WHERE material_id = '$material_id[$key]'";
+        
+        if ($db->query($sql) === FALSE) {
+          echo "Error: " . $sql . "<br>" . $db->error;
+          exit();
+        }
+
         }
     
     header("Location: studymaterial.php");

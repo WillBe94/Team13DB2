@@ -20,7 +20,7 @@ $user_type = $_SESSION['user_type'];
 
     <div id=ribbon_menu>
         <a href=" ./enrolled.php">Current Enrollments</a> | <a href="./meeting.php">Meetings</a> | <a
-            href="./readinggroup.php">Reading Groups</a>
+            href="./readinggroup.php">Reading Groups</a> | <a href="./studymaterial.php">Study Material</a>
         <?php if($user_type == "parent") { ?> | <a href="./childrenchoose.php">My Children</a>
         <?php } ?>
         <?php if($user_type == "student" || $user_type == "parent") { ?>

@@ -8,6 +8,7 @@ Discuss if only admins should be able to add groups<br />
 Add Required to a bunch of inputs<br />
 Make id incrementer into a function to reuse<br />
 1 hour end time might be off do some tests<br />
-Once we are done making the meeting Insert and Updates then make the logic for the date/time restraints
+Once we are done making the meeting Insert and Updates then make the logic for the date/time restraints<br />
+Need to do study material update<br />
 
 Instructions to install and run

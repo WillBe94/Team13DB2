@@ -7,6 +7,8 @@ if (isset($_POST['submit'])) { //check if form was submitted
 	$password = $_POST['passwordText']; //get password text from POST array
 	$name = $_POST['nameText'];
 	$phone = $_POST['phoneNumber'];
+	$security_question = $_POST['security_question'];
+	$security_answer = $_POST['security_answer'];
 
 
 	$highest_id_query = "SELECT MAX(id) FROM users;";
@@ -70,8 +72,15 @@ if (isset($_POST['submit'])) { //check if form was submitted
         <select name="user_type" id="drop_down_menu">
             <option value="student">Student</option>
             <option value="parent">Parent</option>
-            <option value="admin">Admin</option>
+            <!--<option value="admin">Admin</option>-->
         </select><br>
+		<select name="security_question" id="question_drop_down_menu">
+            <option value="sec_q_01">What is the name of the first person you kissed?</option>
+            <option value="sec_q_02">What was the name of your elementary school?</option>
+            <option value="sec_q_03">In what city or town does your nearest sibling live?</option>
+			<option value="sec_q_04">What is your oldest cousin's first and last name?</option>
+        </select><br>
+		Security Answer<input type="test" name="security_answer" id="security_answer" placeholder="Security Answer" required/><br>
         <input type="submit" value="Register" name="submit" />
         <button onclick="location.href='http://localhost/login.html'" type="button">Return to login</button>
     </form>

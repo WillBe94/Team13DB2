@@ -7,6 +7,8 @@ $password_text = $_POST['password_text'];
 $name_text = $_POST['name_text'];
 $phone_number = $_POST['phone_number'];
 $user_type = $_POST['user_type'];
+$security_question = $_POST['security_question'];
+$security_answer = $_POST['security_answer'];
 
 if ($user_type == "student") {
 	$grade_level = $_POST['grade_level'];
@@ -27,7 +29,8 @@ $dupe_count = $dupe_count_row[0];
 
 if (!$dupe_count > 0) //number of dupes is not greater than 0
 {
-	$insert_modification = "INSERT INTO `users` (`id`, `email`, `password`, `name`, `phone`) VALUES ($next_id, '$email', PASSWORD('$password_text'), '$name_text', '$phone_number');";
+	$insert_modification = "INSERT INTO `users` (`id`, `email`, `password`, `name`, `phone`, `security_question`, `security_answer`) VALUES ($next_id, '$email', PASSWORD('$password_text'), '$name_text', '$phone_number', '$security_question', '$security_answer');";
+	#$insert_modification = "INSERT INTO `users` (`id`, `email`, `password`, `name`, `phone`, `security_question`, `security_answer`) VALUES ($next_id, '$email', PASSWORD('$password_text'), '$name_text', '$phone_number');";
 	//insert the new user once we've determined no dupes exist
 	$good_user_insert = mysqli_query($db, $insert_modification);
 

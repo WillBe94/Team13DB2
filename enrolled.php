@@ -6,11 +6,13 @@ $currently_enrolled_query = "SELECT * FROM enrolled WHERE student_id=";
 */
 ?>
 
-<div id=enrolled>
-	<h1>hello world</h1>
+<div id="current_enrollment">
+	<?php
+		
+	?>
 </div>
-<div id=test_button>
-	<button type="button"> Click me! </button>
+<div>
+	
 </div>
 
 <?php

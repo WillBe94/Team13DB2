@@ -64,7 +64,7 @@ while ($row = $userpersonal_result->fetch_assoc()) {
             <tr>
                 <td>Pronouns</td>
                 <td>
-                    <input value="<?php echo $personal_allergies; ?>" type="text" name="pronouns"
+                    <input value="<?php echo $personal_pronouns; ?>" type="text" name="pronouns"
                         placeholder="Fill in your desired pronouns" id="student pronouns">
                 </td>
             </tr>

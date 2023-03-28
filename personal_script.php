@@ -14,7 +14,7 @@ if(isset($_POST['submit'])) {
         $bday = $_POST['bday'];
         $allergies = $_POST['allergies'];
         $pronouns = $_POST['pronouns'];
-        $sql = "UPDATE users SET bday='$bday', allergies='$allergies', pronouns='$pronouns' WHERE id='$user_id'";
+        $sql = "UPDATE students SET bday='$bday', allergies='$allergies', pronouns='$pronouns' WHERE id='$user_id'";
         
         if (mysqli_query($db,$sql) === FALSE) {
             echo "Error updating record: " . $db->error;

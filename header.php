@@ -20,10 +20,16 @@ $user_type = $_SESSION['user_type'];
 
     <div id=ribbon_menu>
         <a href=" ./enrolled.php">Current Enrollments</a> | <a href="./meeting.php">Meetings</a> | <a
-            href="./readinggroup.php">Reading Groups</a> | <a href="./studymaterial.php">Study Material</a>
+            href="./readinggroup.php">Reading Groups</a> | <a href="./studymaterial.php">Study Material</a> |
+
         <?php if($user_type == "parent") { ?> | <a href="./childrenchoose.php">My Children</a>
         <?php } ?>
         <?php if($user_type == "student" || $user_type == "parent") { ?>
         | <a href='http://localhost/settings.php?user_id=<?php echo $user_id; ?>&user_type=<?php echo $user_type; ?>'>My
             Settings</a> <?php } ?>
+
+        <?php if($user_type == "student" || $user_type == "parent") { ?>
+        | <a href='http://localhost/personal.php?user_id=<?php echo $user_id; ?>&user_type=<?php echo $user_type; ?>'>My
+            Personal</a> <?php } ?>
+        
     </div>

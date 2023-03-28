@@ -20,7 +20,7 @@ if($personal_usertype == "student")  {
     $userpersonal_result = mysqli_query($db, $userpersonal_query); 
 
 } else if ($personal_usertype == "parent") {
-    $userpersonal_query = "SELECT name FROM users
+    $userpersonal_query = "SELECT name FROM users 
     WHERE `id`='$personal_userid';";
     $userpersonal_result = mysqli_query($db, $userpersonal_query); 
 }
@@ -64,7 +64,7 @@ while ($row = $userpersonal_result->fetch_assoc()) {
             <tr>
                 <td>Pronouns</td>
                 <td>
-                    <input value="<?php echo $personal_pronouns; ?>" type="text" name="pronouns"
+                    <input value="<?php echo $personal_allergies; ?>" type="text" name="pronouns"
                         placeholder="Fill in your desired pronouns" id="student pronouns">
                 </td>
             </tr>

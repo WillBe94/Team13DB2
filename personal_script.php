@@ -14,13 +14,13 @@ if(isset($_POST['submit'])) {
         $bday = $_POST['bday'];
         $allergies = $_POST['allergies'];
         $pronouns = $_POST['pronouns'];
-        $sql = "UPDATE students SET bday='$bday', allergies='$allergies', pronouns='$pronouns' WHERE id='$user_id'";
+        $sql = "UPDATE students SET bday='$bday', allergies='$allergies', pronouns='$pronouns' WHERE student_id='$user_id'";
         
         if (mysqli_query($db,$sql) === FALSE) {
             echo "Error updating record: " . $db->error;
         }
     }
-    header("Location: settings.php?user_id=$user_id&user_type=$utype");
+    header("Location: personal.php?user_id=$user_id&user_type=$utype");
 } else {
     echo "You can not come here without using a form.";
 }

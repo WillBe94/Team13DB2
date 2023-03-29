@@ -130,6 +130,8 @@ if(isset($_POST['join'])) {
 
     $db->query($sql);
  
+    if($grow['capacity'] > 0) {
+
     $next_capacity = $grow['capacity'] - 1;
 
     $sql = "UPDATE meetings SET
@@ -140,7 +142,7 @@ if(isset($_POST['join'])) {
       echo "Error: " . $sql . "<br>" . $db->error;
       exit();
     }
-
+    }
     header("Location: enrolled.php");
 }
     ?>

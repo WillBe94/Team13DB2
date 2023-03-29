@@ -28,7 +28,8 @@ while ($row = $owned_result->fetch_assoc()) {
 </br>
 
 <div>
-
+    <?php 
+if ($user_type == "admin") {  ?>
     <form action="readinggroup_script.php" method="post">
         <h2>Create new group</h2>
         <table cellspacing="1" bgcolor="#000000">
@@ -48,6 +49,8 @@ while ($row = $owned_result->fetch_assoc()) {
 
         <input type="submit" value="Insert" name="submit2" />
     </form>
+
+    <?php } ?>
     <br><br><br>
     <form action="readinggroup_script.php" method="post">
         <h2>All Groups</h2>

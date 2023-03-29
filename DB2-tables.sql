@@ -78,10 +78,10 @@ CREATE TABLE students (
 INSERT INTO students (student_id,grade,bday,pronouns,allergies)
 VALUES 
 (1, 12,'2005-05-23','They/Them','Peanuts'),
-(2, 12,'2005-05-23','They/Them','Peanuts'),
-(3, 12,'2005-05-23','They/Them','Peanuts'),
-(4, 12,'2005-05-23','They/Them','Peanuts'),
-(5, 12,'2005-05-23','They/Them','Peanuts');
+(2, 12,'2005-05-23','Him/Her','Bagels'),
+(3, 12,'2004-07-23','She/Him','Jello'),
+(4, 12,'2005-05-23','Him/He','Peas'),
+(5, 12,'2005-03-23','Car/Airplan','Bob');
 
 -- ----------------------------
 -- Table structure for child_of
@@ -178,11 +178,11 @@ CREATE TABLE meetings (
 
 INSERT INTO meetings (meeting_id,meeting_name,date,time_slot_id,capacity,group_id,announcement)
 VALUES 
-(1, 'A','2020-06-23',1,0,1,'aoijgpioasjgpaid'),
-(2, 'B','2020-06-23',2,0,2,'aoijgpioasjgpaid'),
-(3, 'C','2020-06-23',3,0,3,'aoijgpioasjgpaid'),
-(4, 'D','2020-06-23',4,0,1,'aoijgpioasjgpaid'),
-(5, 'E','2020-06-23',5,0,2,'aoijgpioasjgpaid');
+(1, 'A','2020-06-23',1,0,1,'ANNOUNCE'),
+(2, 'B','2020-06-23',2,0,2,'This is an alert'),
+(3, 'C','2023-10-23',3,0,3,'Yoyoyoy'),
+(4, 'D','2023-06-23',4,0,1,'Emergency'),
+(5, 'E','2023-10-23',5,0,2,'w');
 
 -- ----------------------------
 -- Table structure for material
@@ -205,11 +205,11 @@ CREATE TABLE material (
 
 INSERT INTO material (material_id,meeting_id,title,author,type,url,notes,assigned_date,isbn)
 VALUES 
-(1, 1,'The Man','String','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180'),
-(2, 1,'The Man','String','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180'),
-(3, 2,'The Man','String','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180'),
-(4, 4,'The Man','String','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180'),
-(5, 2,'The Man','String','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180');
+(1, 1,'The Man','String','sdfadsa','agsag','Cool.com', '2020-06-23','978-0439708180'),
+(2, 1,'The Cam','John','sdfadsa','agsag','Test', '2020-06-23','978-0439708180'),
+(3, 2,'The Aee','Jim','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180'),
+(4, 4,'The geg','String','sdfadsa','agsag','asfas', '2020-06-23','978-0439708180'),
+(5, 2,'The Maen','String','sdfadsa','agsag','asf', '2020-06-23','978-0439708180');
 
 
 -- ----------------------------

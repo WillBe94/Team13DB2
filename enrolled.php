@@ -104,8 +104,7 @@ $group_result = mysqli_query($db, $group_query);
 					?>
         <tr bgcolor="#ffffff">
 
-            <td> <?php echo $row['meeting_id']; ?>
-                <?php echo $row['time_slot_id']; ?>
+            <td>
                 <?php echo $row['meeting_name']; ?>
             </td>
             <td><input value="<?php echo $row['date']; ?>" type="date" type="text" name="date[]" required></td>
@@ -140,8 +139,13 @@ $group_result = mysqli_query($db, $group_query);
         <?php 
 	
                 while ($row = $enroll_result->fetch_assoc()) {
-
-				
+					$mm = $row['meeting_id'];
+					$studentenroll_query = "SELECT name,email FROM users a
+					INNER JOIN students b ON b.student_id = a.id
+					INNER JOIN enroll c ON c.student_id = b.student_id
+					WHERE c.meeting_id = $mm;";
+					$studentenroll_result = mysqli_query($db, $studentenroll_query); 
+					
 					?>
         <tr bgcolor="#ffffff">
 
@@ -157,12 +161,29 @@ $group_result = mysqli_query($db, $group_query);
                     </option> <?php  } ?> </select></td>
             <td><?php echo $row['announcement']; ?></td>
             <td>
-                <input type="submit" value="Leave" name="delete" />
-                <input value="<?php echo $row['meeting_id']; ?>" name="meeting_id2" type="hidden">
-                <input value="<?php echo $user_id; ?>" name="student_id2" type="hidden">
+                <form action="enrolled_script.php" method="post">
+                    <input type="submit" value="Leave" name="delete" />
+                    <input value="<?php echo $row['meeting_id']; ?>" name="meeting_id2" type="hidden">
+                    <input value="<?php echo $user_id; ?>" name="student_id2" type="hidden">
+                </form>
             </td>
 
         </tr>
+        <?php  while ($row2 = $studentenroll_result->fetch_assoc()) {  ?>
+        <tr bgcolor="#ffffff">
+            <td>
+                <p>STUDENT -></p>
+            </td>
+            <td>
+                <p><?php echo $row2['name']; ?></p>
+            </td>
+            <td>
+                <p><?php echo $row2['email']; ?></p>
+            </td>
+        </tr>
+        <?php  } 
+	
+		?>
         <?php  mysqli_data_seek($group_result,0); }?>
     </table>
     <?php	}?>

@@ -11,6 +11,7 @@ if(isset($_POST['create'])) {
     $notes = $_POST['notes'];
     $date = $_POST['date'];
     $meeting_id = $_POST['meeting_id'];
+    $isbn = $_POST['isbn'];
 
     $mysqlDate=date("Y-m-d",strtotime($date));
 
@@ -25,7 +26,8 @@ if(isset($_POST['create'])) {
         url,
         notes,
         assigned_date,
-        meeting_id)
+        meeting_id,
+        isbn)
 
         VALUES ('$next_materialid', 
         '$title', 
@@ -34,7 +36,8 @@ if(isset($_POST['create'])) {
          '$url' ,
         '$notes',
         '$date',
-        '$meeting_id')";
+        '$meeting_id',
+        '$isbn')";
         
         if ($db->query($sql) === FALSE) {
           echo "Error: " . $sql . "<br>" . $db->error;
@@ -53,6 +56,7 @@ if(isset($_POST['create'])) {
     $material_id = $_POST['material_id'];
     $assigned_date = $_POST['date'];
     $meeting_id = $_POST['meeting_id'];
+    $isbn = $_POST['isbn'];
 
     foreach ($meeting_id as $key => $value) {
 
@@ -66,7 +70,8 @@ if(isset($_POST['create'])) {
         url = '$url[$key]' ,
         notes = '$notes[$key]' ,
         assigned_date = '$mysqlDate' ,
-        meeting_id = '$meeting_id[$key]' 
+        meeting_id = '$meeting_id[$key]' ,
+        isbn = '$isbn[$key]' 
         WHERE material_id = '$material_id[$key]'";
         
         if ($db->query($sql) === FALSE) {

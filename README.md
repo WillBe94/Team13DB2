@@ -1,10 +1,50 @@
-# Team13DB2
-
-Questions I have (Temporary)<br />
-Ask teacher if we need to adjust the DB2-tables.sql to insert test rows<br />
-Talk to teammates about handling password<br />
-Talk to teammates about if admin should be able to see settings even if they can not edit it<br />
-Discuss if only admins should be able to add groups<br />
-Once we are done making the meeting Insert and Updates then make the logic for the date/time restraints<br />
-
 Instructions to install and run
+
+We downloaded XAMPP from https://www.apachefriends.org/
+The version with PHP 8.2.0 (Latest)
+Our database name is db2
+We upload the DB2-tables.sql through phpmyadmin to insert tables and dummy data
+We then drop all these files to the htdocs folder
+localhost in the url should take you to the login page
+
+SOME OF THE DEFAULT INSERTED ROWS MAY BREAK RULES WE HAVE MADE
+
+We have 11 default logins.
+
+Username and Passwords
+
+Admin
+a@gmail.com
+a
+
+Student
+b@gmail.com
+b
+
+c@gmail.com
+c
+
+d@gmail.com
+d
+
+e@gmail.com
+e
+
+g@gmail.com
+g
+
+Parent
+h@gmail.com
+h
+
+i@gmail.com
+i
+
+j@gmail.com
+j
+
+k@gmail.com
+k
+
+l@gmail.com
+l

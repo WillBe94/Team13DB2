@@ -52,6 +52,7 @@ $group_result = mysqli_query($db, $group_query);
                 <th>Start time</th>
                 <th>Group</th>
                 <th>Announcment</th>
+
             </tr>
 
             <?php 

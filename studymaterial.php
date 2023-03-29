@@ -1,7 +1,7 @@
 <?php  
 require 'header.php';
 
-$material_query = "SELECT material_id,meeting_id,title,author,type,assigned_date,url,notes FROM material;";
+$material_query = "SELECT isbn,material_id,meeting_id,title,author,type,assigned_date,url,notes FROM material;";
 $material_result = mysqli_query($db, $material_query); 
 
 
@@ -25,7 +25,7 @@ $meeting_result = mysqli_query($db, $meeting_query);
                 <th>Notes</th>
                 <th>Assigned Date</th>
                 <th>Meeting</th>
-
+                <th>Isbn</th>
 
             </tr>
             <tr bgcolor="#ffffff">
@@ -39,7 +39,7 @@ $meeting_result = mysqli_query($db, $meeting_query);
                         <option value="<?php echo $row['meeting_id']; ?>"> <?php echo $row['meeting_name']; ?>
                         </option> <?php } ?>
                     </select></td>
-
+                <td><input type="text" name="isbn"></td>
             </tr>
         </table>
         </br>
@@ -61,7 +61,7 @@ $meeting_result = mysqli_query($db, $meeting_query);
                 <th>Notes</th>
                 <th>Assigned Date</th>
                 <th>Meeting</th>
-
+                <th>Isbn</th>
 
             </tr>
             <?php 
@@ -81,7 +81,7 @@ $meeting_result = mysqli_query($db, $meeting_query);
                             value="<?php echo $row2['meeting_id']; ?>"> <?php echo $row2['meeting_name']; ?>
                         </option> <?php } ?>
                     </select></td>
-
+                <td><input value="<?php echo $row['isbn']; ?>" type="text" name="isbn[]"></td>
             </tr>
             <?php  mysqli_data_seek($meeting_result,0); }?>
         </table>

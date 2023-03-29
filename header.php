@@ -19,8 +19,8 @@ $user_type = $_SESSION['user_type'];
     <div id=ribbon_menu>
         <a href=" ./enrolled.php">Current Enrollments</a>
         <?php if($user_type == "admin") { ?>
-        | <a href="./meeting.php">Meetings</a> |
-        <?php } ?> <a href="./readinggroup.php">Reading Groups</a>
+        | <a href="./meeting.php">Meetings</a>
+        <?php } ?> | <a href="./readinggroup.php">Reading Groups</a>
         <?php if($user_type == "admin") { ?>
         | <a href="./studymaterial.php">Study Material</a>
         <?php } ?>

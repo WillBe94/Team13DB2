@@ -145,6 +145,12 @@ $group_result = mysqli_query($db, $group_query);
 					INNER JOIN enroll c ON c.student_id = b.student_id
 					WHERE c.meeting_id = $mm;";
 					$studentenroll_result = mysqli_query($db, $studentenroll_query); 
+
+
+                    $meetingmaterial_query = "SELECT title,author,type,notes,isbn FROM material 
+
+					WHERE meeting_id = $mm;";
+					$meetingmaterial_result = mysqli_query($db, $meetingmaterial_query); 
 					
 					?>
         <tr bgcolor="#ffffff">
@@ -180,10 +186,44 @@ $group_result = mysqli_query($db, $group_query);
             <td>
                 <p><?php echo $row2['email']; ?></p>
             </td>
+
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
         </tr>
         <?php  } 
 	
 		?>
+
+        <?php  while ($row2 = $meetingmaterial_result->fetch_assoc()) {  ?>
+        <tr bgcolor="#ffffff">
+            <td>
+                <p>MATERIAL -></p>
+            </td>
+            <td>
+                <p><?php echo $row2['title']; ?></p>
+            </td>
+            <td>
+                <p><?php echo $row2['author']; ?></p>
+            </td>
+            <td>
+                <p><?php echo $row2['type']; ?></p>
+            </td>
+            <td>
+                <p><?php echo $row2['notes']; ?></p>
+            </td>
+            <td>
+                <a
+                    href="https://www.amazon.com/s?k=<?php echo $row2['isbn']; ?>&i=stripbooks&crid=2G398ITSOLPWK&sprefix=assa%2Cstripbooks%2C118&ref=nb_sb_noss_2"><?php echo $row2['isbn']; ?></a>
+            </td>
+        </tr>
+        <?php  } ?>
         <?php  mysqli_data_seek($group_result,0); }?>
     </table>
     <?php	}?>

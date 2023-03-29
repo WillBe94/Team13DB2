@@ -10,6 +10,11 @@ if(isset($_POST['create'])) {
     $group_id = $_POST['group_id'];
     $announcement = $_POST['announcement'];
 
+    if (!isWeekend($date)) {
+      echo "Only weekends";
+      exit();
+    }
+
     $mysqlDate=date("Y-m-d",strtotime($date));
 
     $mysqlDateInt=strtotime($mysqlDate);
@@ -52,9 +57,13 @@ if(isset($_POST['create'])) {
     $announcement = $_POST['announcement'];
     $meeting_id = $_POST['meeting_id'];
     $time_slot_id = $_POST['time_slot_id'];
+  
 
     foreach ($meeting_id as $key => $value) {
-
+      if (!isWeekend($date[$key])) {
+        echo "One of your meetings are not on the weekend";
+        exit();
+      }
       $mysqlDate=date("Y-m-d",strtotime($date[$key]));
 
       $mysqlDateInt=strtotime($mysqlDate);

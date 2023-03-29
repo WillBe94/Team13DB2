@@ -1,7 +1,7 @@
 <?php  
 require 'header.php';
 
-$meeting_query = "SELECT meeting_id,meeting_name,group_id,start_time,a.time_slot_id,date,capacity,announcement FROM meetings a
+$meeting_query = "SELECT meeting_id,meeting_name,group_id,date_format(start_time,'%H:%i') as start_time,a.time_slot_id,date,capacity,announcement FROM meetings a
 INNER JOIN time_slot b ON a.time_slot_id = b.time_slot_id;";
 $meeting_result = mysqli_query($db, $meeting_query); 
 
@@ -63,8 +63,8 @@ $group_result = mysqli_query($db, $group_query);
                     <input value="<?php echo $row['meeting_name']; ?>" type="text" name="meeting_name[]" required>
                 </td>
                 <td><input value="<?php echo $row['date']; ?>" type="date" type="text" name="date[]" required></td>
-                <td><input value="<?php echo $row['start_time']; ?>" type="time" name="time[]" min="00:00:00"
-                        max="23:59:59" required>
+                <td><input value="<?php echo $row['start_time']; ?>" type="time" name="time[]" min="00:00" max="23:59"
+                        required>
                 </td>
                 <td><select name="group_id[]" required> <?php  while ($row2 = $group_result->fetch_assoc()) { ?> <option
                             <?php  if($row['group_id'] == $row2['group_id']) { echo "selected"; } ?>

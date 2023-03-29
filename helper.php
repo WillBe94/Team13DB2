@@ -9,4 +9,11 @@ function getNextId($tableName,$attName,$db) {
     return $next_id;
 } 
 
+function isWeekend($date) {
+    return (date('N', strtotime($date)) >= 6);
+}
+
+function beforeFriday($date) {
+    return (date('N', strtotime($date)) < 5);
+}
 ?>

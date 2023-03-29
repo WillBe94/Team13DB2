@@ -30,7 +30,7 @@ while ($row = $owned_result->fetch_assoc()) {
 <div>
 
     <form action="readinggroup_script.php" method="post">
-        <h2>Create new group - (Admin Only?)</h2>
+        <h2>Create new group</h2>
         <table cellspacing="1" bgcolor="#000000">
             <tr bgcolor="#ffffff">
 

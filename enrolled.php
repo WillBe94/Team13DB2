@@ -57,7 +57,7 @@ $group_result = mysqli_query($db, $group_query);
                 <td>
                     <input value="<?php echo $row['meeting_id']; ?>" name="meeting_id[]" type="hidden">
                     <input value="<?php echo $row['time_slot_id']; ?>" name="time_slot_id[]" type="hidden">
-                    <input value="<?php echo $row['meeting_name']; ?>" type="text" name="meeting_name[]" required>
+                    <?php echo $row['meeting_name']; ?>
                 </td>
                 <td><input value="<?php echo $row['date']; ?>" type="date" type="text" name="date[]" required></td>
                 <td><input value="<?php echo $row['start_time']; ?>" type="time" name="time[]" min="00:00:00"
@@ -67,7 +67,7 @@ $group_result = mysqli_query($db, $group_query);
                             <?php  if($row['group_id'] == $row2['group_id']) { echo "selected"; } ?>
                             value="<?php echo $row2['group_id']; ?>"> <?php echo $row2['name']; ?>
                         </option> <?php  } ?> </select></td>
-                <td><input value="<?php echo $row['announcement']; ?>" type="text" name="announcement[]"></td>
+                <td><?php echo $row['announcement']; ?></td>
                 <td><?php echo $row['capacity']; ?></td>
 
             </tr>

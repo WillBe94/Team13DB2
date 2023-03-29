@@ -51,18 +51,21 @@ if (isset($_SESSION['user_type'])) //if coming from the registration screen, jus
 		$row_student = $is_student->fetch_row();
 		
 
+	
+
 		if ($row_admin[0] == 1) //is the user the admin?
 		{
 			$_SESSION["user_type"] = "admin"; //save to session
-			header('Location: /enrolled.php');
+			
+			header("Location: enrolled.php?user_id=$user_id&user_type=admin");
 		} elseif ($row_parent[0] == 1) //is the user a parent?
 		{
 			$_SESSION["user_type"] = "parent";
-			header('Location: /enrolled.php');
+			header("Location: enrolled.php?user_id=$user_id&user_type=parent");
 		} elseif ($row_student[0] == 1) //surely the user is a student then... right?
 		{
 			$_SESSION["user_type"] = "student";
-			header('Location: /enrolled.php');
+			header("Location: enrolled.php?user_id=$user_id&user_type=student");
 		} else {
 			//HALT AND CATCH FIRE
 			echo ('<p> Error: user id found in user table but not found in any of the 3 user type tables </p>');

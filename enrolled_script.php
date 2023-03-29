@@ -56,7 +56,7 @@ if(isset($_POST['join'])) {
        }
     }
 
-       header("Location: enrolled.php");
+       header("Location: enrolled.php?user_id= $student_id&user_type=student");
     } else {
         echo "You either chose the wrong group id or joined too late or capacity is full";
     }
@@ -114,7 +114,7 @@ if(isset($_POST['join'])) {
     }
     }
     }
-    header("Location: enrolled.php");
+    header("Location: enrolled.php?user_id= $student_id&user_type=student");
 
 } else if(isset($_POST['delete'])) {
     include ("database_connect.php");
@@ -143,6 +143,6 @@ if(isset($_POST['join'])) {
       exit();
     }
     }
-    header("Location: enrolled.php");
+    header("Location: enrolled.php?user_id= $student_id&user_type=student");
 }
     ?>

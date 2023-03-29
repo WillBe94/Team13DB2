@@ -1,6 +1,8 @@
 <?php  
 
 require 'header.php';
+$setting_userid = htmlspecialchars($_GET["user_id"]);
+$setting_usertype = htmlspecialchars($_GET["user_type"]);
 
 $meeting_query = "SELECT meeting_id,grade_req,meeting_name,a.group_id,date_format(start_time,'%H:%i') as start_time,date_format(end_time,'%H:%i') as end_time,end_time,a.time_slot_id,date,capacity,announcement FROM meetings a
 INNER JOIN time_slot b ON a.time_slot_id = b.time_slot_id
@@ -10,12 +12,30 @@ $meeting_result = mysqli_query($db, $meeting_query);
 $enroll_query = "SELECT a.meeting_id,meeting_name,group_id,date_format(start_time,'%H:%i') as start_time,date_format(end_time,'%H:%i') as end_time,end_time,a.time_slot_id,date,capacity,announcement FROM meetings a
 INNER JOIN time_slot b ON a.time_slot_id = b.time_slot_id
 INNER JOIN enroll c ON c.meeting_id = a.meeting_id
-WHERE c.student_id = $user_id;";
+WHERE c.student_id = $setting_userid;";
 $enroll_result = mysqli_query($db, $enroll_query); 
 
 
 $group_query = "SELECT description,name,group_id,grade_req FROM groups;";
 $group_result = mysqli_query($db, $group_query); 
+
+
+if($user_type == "parent") {
+    $c_query = "SELECT name,id FROM users
+    INNER JOIN students as b ON id = b.student_id
+    INNER JOIN child_of as a ON a.student_id = b.student_id
+    WHERE `parent_id`='$user_id';";
+    
+    $c_result = mysqli_query($db, $c_query); 
+}
+
+if($user_type == "admin") {
+    $c_query = "SELECT name,id FROM users
+    INNER JOIN students as b ON id = b.student_id;";
+    
+    $c_result = mysqli_query($db, $c_query); 
+}
+
 
 ?>
 
@@ -27,7 +47,9 @@ $group_result = mysqli_query($db, $group_query);
         <h2>Upcoming Meetings</h2>
         <table cellspacing="1" bgcolor="#000000">
             <tr bgcolor="#ffffff">
+                <?php if($setting_usertype == "student") { ?>
                 <th></th>
+                <?php } ?>
                 <th>Name</th>
                 <th>Date</th>
                 <th>Start time</th>
@@ -46,14 +68,16 @@ $group_result = mysqli_query($db, $group_query);
 					if($theDate > date('Y-m-d H:i')  ) {
 					?>
             <tr bgcolor="#ffffff">
+                <?php if($setting_usertype == "student") { ?>
                 <td>
                     <form action="enrolled_script.php" method="post">
                         <input type="submit" value="Join" name="join" />
                         <input value="<?php echo $row['meeting_id']; ?>" name="meeting_id2" type="hidden">
-                        <input value="<?php echo $user_id; ?>" name="student_id2" type="hidden">
+                        <input value="<?php echo $setting_userid; ?>" name="student_id2" type="hidden">
                         <input value="<?php echo $row['date']; ?>" name="date2" type="hidden">
                     </form>
                 </td>
+                <?php } ?>
                 <td>
                     <input value="<?php echo $row['meeting_id']; ?>" name="meeting_id[]" type="hidden">
                     <input value="<?php echo $row['time_slot_id']; ?>" name="time_slot_id[]" type="hidden">
@@ -75,9 +99,9 @@ $group_result = mysqli_query($db, $group_query);
         </table>
 
         </br>
-
+        <?php if($setting_usertype == "student") { ?>
         <input type="submit" value="Join All in your group" name="joinall" />
-
+        <?php } ?>
     </form>
 
 
@@ -122,7 +146,7 @@ $group_result = mysqli_query($db, $group_query);
     </table>
 
 
-    <?php if ($user_type == "student") { ?>
+    <?php if ($setting_usertype == "student") { ?>
     <h2>Meetings you are enrolled in</h2>
     <table cellspacing="1" bgcolor="#000000">
         <tr bgcolor="#ffffff">
@@ -170,7 +194,7 @@ $group_result = mysqli_query($db, $group_query);
                 <form action="enrolled_script.php" method="post">
                     <input type="submit" value="Leave" name="delete" />
                     <input value="<?php echo $row['meeting_id']; ?>" name="meeting_id2" type="hidden">
-                    <input value="<?php echo $user_id; ?>" name="student_id2" type="hidden">
+                    <input value="<?php echo $setting_userid; ?>" name="student_id2" type="hidden">
                 </form>
             </td>
 
@@ -227,6 +251,19 @@ $group_result = mysqli_query($db, $group_query);
         <?php  mysqli_data_seek($group_result,0); }?>
     </table>
     <?php	}?>
+
+    <?php if($user_type == "parent" ||$user_type == "admin" ) { ?>
+    <p>Students</p>
+    <?php
+        while ($row = $c_result->fetch_assoc()) {
+    ?>
+
+    <a href="enrolled.php?user_id=<?php echo $row['id']; ?>&user_type=student"><?php echo $row['name']; ?></a><br>
+
+    <?php
+        }
+    }
+    ?>
 </div>
 
 <?

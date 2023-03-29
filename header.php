@@ -17,7 +17,9 @@ $user_type = $_SESSION['user_type'];
     <p><?php echo "You are a $user_type"; ?><br> <a href="./logout.php">Logout</a></p>
 
     <div id=ribbon_menu>
-        <a href=" ./enrolled.php">Current Enrollments</a>
+        <a href='./enrolled.php?user_id=<?php echo $user_id; ?>&user_type=<?php echo $user_type; ?>'>Current
+            Enrollments</a>
+
         <?php if($user_type == "admin") { ?>
         | <a href="./meeting.php">Meetings</a>
         <?php } ?> | <a href="./readinggroup.php">Reading Groups</a>

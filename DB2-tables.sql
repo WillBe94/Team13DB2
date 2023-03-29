@@ -178,11 +178,11 @@ CREATE TABLE meetings (
 
 INSERT INTO meetings (meeting_id,meeting_name,date,time_slot_id,capacity,group_id,announcement)
 VALUES 
-(1, 'A','2020-06-23',1,0,1,'ANNOUNCE'),
-(2, 'B','2020-06-23',2,0,2,'This is an alert'),
-(3, 'C','2023-10-23',3,0,3,'Yoyoyoy'),
-(4, 'D','2023-06-23',4,0,1,'Emergency'),
-(5, 'E','2023-10-23',5,0,2,'w');
+(1, 'A','2020-06-13',1,0,1,'ANNOUNCE'),
+(2, 'B','2020-06-20',2,0,2,'This is an alert'),
+(3, 'C','2023-10-22',3,0,3,'Yoyoyoy'),
+(4, 'D','2023-06-24',4,0,1,'Emergency'),
+(5, 'E','2023-10-22',5,0,2,'w');
 
 -- ----------------------------
 -- Table structure for material
@@ -205,7 +205,7 @@ CREATE TABLE material (
 
 INSERT INTO material (material_id,meeting_id,title,author,type,url,notes,assigned_date,isbn)
 VALUES 
-(1, 1,'The Man','String','sdfadsa','agsag','Cool.com', '2020-06-23','978-0439708180'),
+(1, 1,'Harry Potter','Rowling','Magic','agsag','Cool.com', '2020-06-23','978-0439708180'),
 (2, 1,'The Cam','John','sdfadsa','agsag','Test', '2020-06-23','978-0439708180'),
 (3, 2,'The Aee','Jim','sdfadsa','agsag','sgwegweshewrhewghewgewgewgew', '2020-06-23','978-0439708180'),
 (4, 4,'The geg','String','sdfadsa','agsag','asfas', '2020-06-23','978-0439708180'),
